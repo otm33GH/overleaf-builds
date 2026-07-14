@@ -121,11 +121,13 @@ jobs:
           mkdir -p release/libraries/
           mkdir -p release/node_modules/
           mkdir -p release/server-ce/
+          mkdir -p release/tools/
           
           cp -r overleaf/services/* release/services/ 
           cp -r overleaf/libraries/* release/libraries/ 
           cp -r overleaf/node_modules/* release/node_modules/ 
           cp -r overleaf/server-ce/* release/server-ce/
+          cp -r overleaf/tools/* release/tools/
 
       - name: Compress tarball
         run: |
