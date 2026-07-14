@@ -114,6 +114,12 @@ jobs:
           cp -r overleaf/node_modules/* release/node_modules/ 
           cp -r overleaf/server-ce/* release/server-ce/
           cp -r overleaf/tools/* release/tools/
+          cp overleaf/package.json release/
+          cp overleaf/yarn.lock release/
+          cp overleaf/.yarnrc.yml release/
+          mkdir -p release/.yarn
+          cp -r overleaf/.yarn/* release/.yarn/
+          
 
       - name: Compress tarball
         run: |
