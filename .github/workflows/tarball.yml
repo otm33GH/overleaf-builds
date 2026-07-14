@@ -14,7 +14,7 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     outputs:
-      should_build: ${{ steps.check-version.outputs.should_build }}
+      should_build: true
       version: ${{ steps.version.outputs.version }}
       commit: ${{ steps.commit.outputs.commit_full }}
     
@@ -52,7 +52,6 @@ jobs:
 
       # Upload source artefact so we can reuse it in the build step
       - name: Upload source artifact
-        if: steps.check-version.outputs.should_build == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: overleaf-source
