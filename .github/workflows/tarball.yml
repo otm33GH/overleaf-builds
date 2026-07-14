@@ -49,19 +49,6 @@ jobs:
           VERSION="${{ steps.commit_date.outputs.commit_date }}-${{ steps.commit.outputs.commit_short }}"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Check if tag already exists
-        id: check-version
-        shell: bash
-        run: |
-          TAG="${{ steps.version.outputs.version }}"
-            # Check in this repo if the tag is already created
-            echo "Tag $TAG already exists → skipping build"
-            if git ls-remote --tags https://github.com/${{ github.repository }} "$TAG" | grep -q "$TAG"; then
-            echo "should_build=false" >> $GITHUB_OUTPUT
-          else
-            echo "Tag $TAG not found → building"
-            echo "should_build=true" >> $GITHUB_OUTPUT
-          fi
 
       # Upload source artefact so we can reuse it in the build step
       - name: Upload source artifact
